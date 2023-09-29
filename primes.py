@@ -1,11 +1,20 @@
-
 def primes(number_of_primes):
-    list = []
-    if number_of_primesb == 0 or number_of_primes==1 or number_of_primes<0:
-        return []
-    else:
-        for i in range(2,number_of_primes):
-            if number_of_primes % i:
-                list.append(number_of_primes)
-            i += 1
-    return list
+    if number_of_primes <= 0:
+        raise ValueError("number_of_primes must be a positive integer.")
+
+    prime_list = []
+    num = 2
+
+    while len(prime_list) < number_of_primes:
+        is_prime = True
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                is_prime = False
+                break
+
+        if is_prime:
+            prime_list.append(num)
+
+        num += 1
+
+    return prime_list
